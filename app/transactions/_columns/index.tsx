@@ -40,7 +40,7 @@ export const transactionColumns: ColumnDef<Transaction>[] = [
     accessorKey: "date",
     header: "Data",
     cell: ({ row: { original: transaction } }) =>
-      transaction.date.toLocaleDateString("pt-BR", {
+      new Date(transaction.date).toLocaleDateString("pt-BR", {
         day: "2-digit",
         month: "long",
         year: "numeric",
@@ -58,7 +58,7 @@ export const transactionColumns: ColumnDef<Transaction>[] = [
   {
     accessorKey: "actions",
     header: "Ações",
-    cell: ({row: { original: transaction }}) => {
+    cell: ({ row: { original: transaction } }) => {
       return (
         <div className="space-x-2">
           <EditTransactionButton transaction={transaction} />
